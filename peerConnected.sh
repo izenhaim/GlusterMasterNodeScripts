@@ -1,7 +1,7 @@
 #!/bin/bash
 peerNumberFlag="false"
 connectedNum=0
-gluster peer status > tmp
+gluster peer status > /tmp/tmp2.txt
 while read LINE
 do
         if [[ $LINE == "Number of Peers: 3" ]]
@@ -16,7 +16,7 @@ do
                         connectedNum=$(($connectedNum+1))
                 fi
         fi
-done < tmp
+done < /tmp/tmp2.txt
 if [[ $peerNumberFlag == "true"  && $connectedNum == "3" ]]
  then
         echo "Connected"
